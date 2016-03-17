@@ -12,6 +12,9 @@
   '(ecb
     yasnippet
     google-c-style
+    helm
+    helm-swoop
+    helm-gtags
     ))
 
 (defun install-packages ()
@@ -50,6 +53,15 @@
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style) ;; load google style for c-mode
 (add-hook 'c-mode-common-hook 'google-make-newline-indent) ;; automatically indent at newline
+
+;; this variables must be set before load helm-gtags
+;; you can change to any prefix key of your choice
+(setq helm-gtags-prefix-key "\C-cg")
+
+(add-to-list 'load-path "~/.emacs.d/custom")
+
+(require 'setup-helm)
+(require 'setup-helm-gtags)
 
 
 ;; Use space to indent by default
