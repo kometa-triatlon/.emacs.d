@@ -2,7 +2,7 @@
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
-
+(add-to-list 'load-path "~/.emacs.d/custom")
 ;; The value of this variable is the number of bytes of storage
 ;; that must be allocated for Lisp objects after one garbage collection
 ;; in order to trigger another garbage collection
@@ -11,10 +11,10 @@
 (defconst required-packages
   '(ecb
     yasnippet
-    google-c-style
     helm
     helm-swoop
     helm-gtags
+    cedet
     ))
 
 (defun install-packages ()
@@ -27,6 +27,7 @@
       (package-install package))))
 
 (install-packages)
+
 
 
 (require 'ecb)
@@ -58,11 +59,15 @@
 ;; you can change to any prefix key of your choice
 (setq helm-gtags-prefix-key "\C-cg")
 
-(add-to-list 'load-path "~/.emacs.d/custom")
+
 
 (require 'setup-helm)
 (require 'setup-helm-gtags)
 
+(require 'cedet)
+(semantic-mode 1)
+(global-ede-mode 1)                      ; Enable the Project management system
+;;(semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
 
 ;; Use space to indent by default
 (setq-default indent-tabs-mode nil)
