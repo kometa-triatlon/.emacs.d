@@ -15,6 +15,7 @@
     helm-swoop
     helm-gtags
     cedet
+    clang-format
     ))
 
 (defun install-packages ()
