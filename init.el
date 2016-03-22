@@ -11,9 +11,11 @@
 (defconst required-packages
   '(ecb
     yasnippet
+    xcscope
     helm
     helm-swoop
     helm-gtags
+    helm-cscope
     cedet
     clang-format
     ))
@@ -69,6 +71,22 @@
 (semantic-mode 1)
 (global-ede-mode 1)                      ; Enable the Project management system
 ;;(semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
+
+
+;; Enable helm-cscope-mode
+(require 'helm-cscope)
+(add-hook 'c-mode-hook 'helm-cscope-mode)
+(add-hook 'c++-mode-hook 'helm-cscope-mode)
+
+
+;; Set key bindings
+(eval-after-load "helm-cscope"
+  '(progn
+     (define-key helm-cscope-mode-map (kbd "M-t") 'helm-cscope-find-symbol)
+     (define-key helm-cscope-mode-map (kbd "M-r") 'helm-cscope-find-global-definition)
+     (define-key helm-cscope-mode-map (kbd "M-g M-c") 'helm-cscope-find-called-function)
+     (define-key helm-cscope-mode-map (kbd "M-g M-p") 'helm-cscope-find-calling-this-funtcion)
+     (define-key helm-cscope-mode-map (kbd "M-s") 'helm-cscope-select)))
 
 ;; Use space to indent by default
 (setq-default indent-tabs-mode nil)
