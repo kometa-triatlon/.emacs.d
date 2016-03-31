@@ -126,4 +126,6 @@
 (show-paren-mode 1)
 (setq show-paren-delay 0)
 
-
+;; Show line numbers
+(global-linum-mode t)
+(custom-set-variables '(linum-format (quote "%4d ")))
