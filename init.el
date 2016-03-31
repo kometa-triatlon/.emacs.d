@@ -3,7 +3,7 @@
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 (add-to-list 'load-path "~/.emacs.d/custom")
-
+(add-to-list 'custom-theme-load-path "~/.emacs.d/custom/emacs-color-theme-solarized")
 ;; The value of this variable is the number of bytes of storage
 ;; that must be allocated for Lisp objects after one garbage collection
 ;; in order to trigger another garbage collection
@@ -35,6 +35,7 @@
 
 (install-packages)
 
+(load-theme 'solarized t)
 
 
 (require 'ecb)
