@@ -3,6 +3,7 @@
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 (add-to-list 'load-path "~/.emacs.d/custom")
+
 ;; The value of this variable is the number of bytes of storage
 ;; that must be allocated for Lisp objects after one garbage collection
 ;; in order to trigger another garbage collection
@@ -10,7 +11,6 @@
 
 (defconst required-packages
   '(ecb
-    yasnippet
     xcscope
     helm
     helm-swoop
@@ -18,6 +18,10 @@
     helm-cscope
     cedet
     clang-format
+    irony
+    company
+    company-irony
+    company-c-headers
     ))
 
 (defun install-packages ()
@@ -50,8 +54,8 @@
  )
 
 
-(require 'yasnippet)
-(yas-global-mode 1)
+;;(require 'yasnippet)
+;;(yas-global-mode 1)
 
 
 (require 'google-c-style)
@@ -62,8 +66,6 @@
 ;; you can change to any prefix key of your choice
 (setq helm-gtags-prefix-key "\C-cg")
 
-
-
 (require 'setup-helm)
 (require 'setup-helm-gtags)
 
@@ -72,6 +74,9 @@
 (global-ede-mode 1)                      ; Enable the Project management system
 ;;(semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
 
+
+(require 'setup-irony)
+(require 'setup-company)
 
 ;; Enable helm-cscope-mode
 (require 'helm-cscope)
@@ -119,3 +124,5 @@
 ;; Show matching parens:
 (show-paren-mode 1)
 (setq show-paren-delay 0)
+
+
