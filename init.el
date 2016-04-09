@@ -58,6 +58,7 @@
 ;;(require 'yasnippet)
 ;;(yas-global-mode 1)
 
+(global-set-key (kbd "C-x f") 'clang-format-buffer)
 
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style) ;; load google style for c-mode
@@ -91,7 +92,7 @@
      (define-key helm-cscope-mode-map (kbd "M-t") 'helm-cscope-find-symbol)
      (define-key helm-cscope-mode-map (kbd "M-r") 'helm-cscope-find-global-definition)
      (define-key helm-cscope-mode-map (kbd "M-g M-c") 'helm-cscope-find-called-function)
-     (define-key helm-cscope-mode-map (kbd "M-g M-p") 'helm-cscope-find-calling-this-funtcion)
+     (define-key helm-cscope-mode-map (kbd "M-g M-p") 'helm-cscope-find-calling-this-function)
      (define-key helm-cscope-mode-map (kbd "M-s") 'helm-cscope-select)))
 
 ;; Use space to indent by default
