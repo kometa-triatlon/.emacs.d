@@ -7,7 +7,7 @@
 (add-hook 'c++-mode-hook 'company-mode)
 (add-hook 'c-mode-hook 'company-mode)
 
-(setq company-idle-delay 0.1)
+(setq company-idle-delay 0)
 
 
 ; configure backends
