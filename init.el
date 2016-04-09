@@ -22,6 +22,7 @@
     company
     company-irony
     company-c-headers
+    flycheck
     ))
 
 (defun install-packages ()
@@ -94,6 +95,9 @@
      (define-key helm-cscope-mode-map (kbd "M-g M-c") 'helm-cscope-find-called-function)
      (define-key helm-cscope-mode-map (kbd "M-g M-p") 'helm-cscope-find-calling-this-function)
      (define-key helm-cscope-mode-map (kbd "M-s") 'helm-cscope-select)))
+
+
+(add-hook 'after-init-hook 'global-flycheck-mode)
 
 ;; Use space to indent by default
 (setq-default indent-tabs-mode nil)
