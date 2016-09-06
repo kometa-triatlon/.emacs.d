@@ -23,6 +23,7 @@
     company-irony
     company-c-headers
     flycheck
+    yasnippet
     ))
 
 (defun install-packages ()
@@ -56,8 +57,8 @@
  )
 
 
-;;(require 'yasnippet)
-;;(yas-global-mode 1)
+(require 'yasnippet)
+(yas-global-mode 1)
 
 (global-set-key (kbd "C-x f") 'clang-format-buffer)
 
@@ -132,5 +133,5 @@
 (setq show-paren-delay 0)
 
 ;; Show line numbers
-(global-linum-mode t)
+;(global-linum-mode t)
 (custom-set-variables '(linum-format (quote "%4d ")))
