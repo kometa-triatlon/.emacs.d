@@ -19,13 +19,9 @@
 
 (add-to-list 'company-c-headers-path-system "/usr/include/")
 (add-to-list 'company-c-headers-path-system "/usr/local/include/")
-(add-to-list 'company-c-headers-path-system "/usr/local/include/c++/5.2.0")
-(add-to-list 'company-c-headers-path-system "/usr/include/c++/4.8")
+(add-to-list 'company-c-headers-path-system "/usr/include/c++/5")
+(add-to-list 'company-c-headers-path-system "/usr/include/c++/5/tr1")
 
-(add-to-list 'company-c-headers-path-system "/usr/include/qt5")
-(add-to-list 'company-c-headers-path-system "/usr/include/qt5/QtCore")
-(add-to-list 'company-c-headers-path-system "/usr/include/qt5/QtNetwork")
-(add-to-list 'company-c-headers-path-system "/usr/include/qt5/QtTest")
 
 (eval-after-load 'company '(setq company-backends nil))
 (eval-after-load 'company '(add-to-list 'company-backends 'company-irony))

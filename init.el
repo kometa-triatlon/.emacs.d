@@ -1,4 +1,9 @@
 (require 'package)
+
+(setq url-proxy-services
+      '(("no_proxy" . "^\\(localhost\\|10.*\\)")
+        ("http" . "proxy1.hella.com:3128")))
+
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
@@ -22,7 +27,6 @@
     company
     company-irony
     company-c-headers
-    flycheck
     yasnippet
     ))
 
@@ -98,8 +102,6 @@
      (define-key helm-cscope-mode-map (kbd "M-s") 'helm-cscope-select)))
 
 
-(add-hook 'after-init-hook 'global-flycheck-mode)
-
 ;; Use space to indent by default
 (setq-default indent-tabs-mode nil)
 
@@ -123,6 +125,8 @@
 
 ;; Treat .h files as c++ files
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+;; CUDA source files
+(add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
 
 ;; To use arrows to jump between windows
 (when (fboundp 'windmove-default-keybindings)
