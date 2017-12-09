@@ -1,64 +1,18 @@
 (require 'package)
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
 (package-initialize)
 (add-to-list 'load-path "~/.emacs.d/custom")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/custom/emacs-color-theme-solarized")
-;; The value of this variable is the number of bytes of storage
-;; that must be allocated for Lisp objects after one garbage collection
-;; in order to trigger another garbage collection
-(setq gc-cons-threshold 100000000)
 
 (defconst required-packages
-  '(ecb
-    xcscope
-    helm
+  '(helm
     helm-swoop
     helm-gtags
     helm-cscope
-    cedet
     clang-format
-    irony
-    company
-    company-irony
-    company-c-headers
-    flycheck
-    yasnippet
     ))
 
-(defun install-packages ()
-  "Install all required packages."
-  (interactive)
-  (unless package-archive-contents
-    (package-refresh-contents))
-  (dolist (package required-packages)
-    (unless (package-installed-p package)
-      (package-install package))))
-
-(install-packages)
-
-(load-theme 'solarized t)
-
-
-(require 'ecb)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ecb-options-version "2.40")
- '(ecb-layout-name "left3"))
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
-
-(require 'yasnippet)
-(yas-global-mode 1)
+;(load-theme 'solarized t)
 
 (global-set-key (kbd "C-x f") 'clang-format-buffer)
 
@@ -72,33 +26,6 @@
 
 (require 'setup-helm)
 (require 'setup-helm-gtags)
-
-(require 'cedet)
-(semantic-mode 1)
-(global-ede-mode 1)                      ; Enable the Project management system
-;;(semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
-
-
-(require 'setup-irony)
-(require 'setup-company)
-
-;; Enable helm-cscope-mode
-(require 'helm-cscope)
-(add-hook 'c-mode-hook 'helm-cscope-mode)
-(add-hook 'c++-mode-hook 'helm-cscope-mode)
-
-
-;; Set key bindings
-(eval-after-load "helm-cscope"
-  '(progn
-     (define-key helm-cscope-mode-map (kbd "M-t") 'helm-cscope-find-symbol)
-     (define-key helm-cscope-mode-map (kbd "M-r") 'helm-cscope-find-global-definition)
-     (define-key helm-cscope-mode-map (kbd "M-g M-c") 'helm-cscope-find-called-function)
-     (define-key helm-cscope-mode-map (kbd "M-g M-p") 'helm-cscope-find-calling-this-function)
-     (define-key helm-cscope-mode-map (kbd "M-s") 'helm-cscope-select)))
-
-
-(add-hook 'after-init-hook 'global-flycheck-mode)
 
 ;; Use space to indent by default
 (setq-default indent-tabs-mode nil)
