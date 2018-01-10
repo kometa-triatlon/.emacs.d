@@ -50,8 +50,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ecb-options-version "2.40")
- '(ecb-layout-name "left3"))
+ '(ecb-layout-name "left3")
+ '(ecb-options-version "2.50")
+ '(linum-format (quote "%4d ")))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -95,7 +96,7 @@
 ;; Set key bindings
 (eval-after-load "helm-cscope"
   '(progn
-     (define-key helm-cscope-mode-map (kbd "M-t") 'helm-cscope-find-symbol)
+     (define-key helm-cscope-mode-map (kbd "M-t") 'helm-cscope-find-this-symbol)
      (define-key helm-cscope-mode-map (kbd "M-r") 'helm-cscope-find-global-definition)
      (define-key helm-cscope-mode-map (kbd "M-g M-c") 'helm-cscope-find-called-function)
      (define-key helm-cscope-mode-map (kbd "M-g M-p") 'helm-cscope-find-calling-this-function)
@@ -138,4 +139,4 @@
 
 ;; Show line numbers
 ;(global-linum-mode t)
-(custom-set-variables '(linum-format (quote "%4d ")))
+
