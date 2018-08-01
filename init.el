@@ -1,11 +1,21 @@
 (require 'package)
 
 (setq url-proxy-services
-      '(("no_proxy" . "^\\(localhost\\|10.*\\)")
-        ("http" . "proxy1.hella.com:3128")))
+      '(("no_proxy" . "^\\(localhost\\)")
+        ("http" . "10.0.1.4:3128")
+        ("https" . "10.0.1.4:3128")))
+
+;(setq url-http-proxy-basic-auth-storage
+;      (list (list "10.0.1.4:3128"
+;                  (cons "Input your LDAP UID !"
+;                        (base64-encode-string "USER:PASS")))))
 
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/"))
+
 (package-initialize)
 (add-to-list 'load-path "~/.emacs.d/custom")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/custom/emacs-color-theme-solarized")
@@ -28,6 +38,7 @@
     company-irony
     company-c-headers
     yasnippet
+    elpy
     ))
 
 (defun install-packages ()
@@ -137,6 +148,9 @@
 (show-paren-mode 1)
 (setq show-paren-delay 0)
 
+(elpy-enable)
+
 ;; Show line numbers
 ;(global-linum-mode t)
 
+(electric-indent-mode 0)
